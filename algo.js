@@ -1,41 +1,42 @@
-class producto {
-    constructor (objeto, precio){
+class Producto {
+    constructor(objeto, precio) {
         this.objeto = objeto;
         this.precio = precio;
+        this.cantidad = 0;
     }
 }
 
-let producto = [];
-producto.push(new producto("tornillo", 500));
-producto.push(new producto("turca", 200));
-producto.push(new producto("discos de corte", 2000));
-producto.push(new producto("soldadura", 10000));
-producto.push(new producto("arandelas", 10000));
+let productos = [];
+productos.push(new Producto("tornillo", 500));
+productos.push(new Producto("tuerca", 200));
+productos.push(new Producto("discos de corte", 2000));
+productos.push(new Producto("soldadura", 10000));
+productos.push(new Producto("arandelas", 10000));
 
 let cuenta = [];
-alert('Bienvenido a este simulador de facturas de nuestra tienda ');
+alert('Bienvenido a este simulador de facturas de nuestra tienda.');
 while (true) {
     let selector = prompt(`Menú:\n1. tornillo ($500)\n2. tuerca ($200)\n3. discos de corte ($2000)\n4. soldadura ($10000)\n5. arandelas ($10000)\n\nSelecciona un producto (1-5) o escribe "PAGAR" para finalizar:`).toUpperCase();
-    
-    if (selector === "PAGAR"||selector==="Pagar"||selector=="pagar") {
+
+    if (selector === "PAGAR") {
         break;
     }
 
     let opcion = parseInt(selector);
     if (opcion >= 1 && opcion <= 5) {
-        let cantidad = parseInt(prompt(`Ingresa la cantidad de ${producto[opcion - 1].objeto} que deseas:`));
+        let cantidad = parseInt(prompt(`Ingresa la cantidad de ${productos[opcion - 1].objeto} que deseas:`));
         if (cantidad > 0) {
             let found = false;
             for (const item of cuenta) {
-                if (item.objeto === producto[opcion - 1].objeto) {
+                if (item.objeto === productos[opcion - 1].objeto) {
                     item.cantidad += cantidad;
                     found = true;
                     break;
                 }
             }
             if (!found) {
-                producto[opcion - 1].cantidad = cantidad;
-                cuenta.push(menu[opcion - 1]);
+                productos[opcion - 1].cantidad = cantidad;
+                cuenta.push(productos[opcion - 1]);
             }
         } else {
             alert("Cantidad inválida.");
