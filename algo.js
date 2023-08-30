@@ -52,7 +52,7 @@ for (const item of cuenta) {
 }
 
 let iva = subtotal * 0.19;
-let total = subtotal + iva;
+let total = subtotal ;
 
 document.write("<h1>Productos seleccionados:</h1><br><hr><hr>");
 for (const item of cuenta) {
